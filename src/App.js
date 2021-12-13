@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import './App.css';
+
 import apiTMDB from './service/tmdb'
+
+import MovieRow from './components/MovieRow'
 
 function App() {
   const [ movieList, setMovieList ] = useState([])
@@ -18,7 +21,11 @@ function App() {
     <div className='page'>
       Header
       Destaque
-      As Listas
+      <section className='lists'>
+        {movieList.map((item, key)=>(
+          <MovieRow title={item.title} items={item.items} key={key}/>
+        ))}
+      </section>
       Rodape basico
     </div>
   );

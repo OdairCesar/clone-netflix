@@ -5,10 +5,12 @@ import apiTMDB from './service/tmdb'
 
 import MovieRow from './components/MovieRow'
 import FeatureMovie from './components/FeaturedMovie'
+import Header from './components/Header'
 
 function App() {
   const [ movieList, setMovieList ] = useState([])
   const [ featuredData, setFeaturedData ] = useState(null)
+  const [ blackHeader, setBlackHeader ] = useState(false)
 
   useEffect(() => {
     //Pegando a listas das categorias
@@ -29,9 +31,24 @@ function App() {
     loadAll()
   }, [])
 
+  useEffect(()=>{
+    const scrollListener = () => {
+      if(window.scrollY > 15){
+        setBlackHeader(true)
+      }else{
+        setBlackHeader(false)
+      }
+    }
+    window.addEventListener('scroll', scrollListener)
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener)
+    }
+  }, [])
+
   return (
     <div className='page'>
-      Header
+      <Header black={blackHeader}/>
       {featuredData ? <FeatureMovie item={featuredData} /> : null}
       <section className='lists'>
         {movieList.map((item, key)=>(

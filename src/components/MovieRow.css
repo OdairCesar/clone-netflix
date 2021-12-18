@@ -59,3 +59,20 @@
 .movieRow:hover .movieRow--right{
     opacity: 1;
 }
+
+@media(max-width: 576px){
+    .movieRow--left,
+    .movieRow--right{
+        opacity: 1;
+        margin-top: 40px;
+        height: 150px;
+    }
+    
+    .movieRow--listarea{
+        padding-left: 10px;
+    }
+
+    .movieRow--item{
+        width: 150px;
+    }
+}

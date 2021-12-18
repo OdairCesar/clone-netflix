@@ -5,7 +5,8 @@ import NavigateNextBeforeIcon from '@material-ui/icons/NavigateBefore'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 
 export default function MovieRow({items, title}) {
-    const [ scrollX, setScrollX] = useState(-400) 
+    const [ scrollX, setScrollX] = useState(0)
+    const tamItem = window.innerWidth > 576 ? 250 : 150
 
     const handleLeftArrow =  function (){
         let x = scrollX + Math.round(window.innerWidth / 2)
@@ -16,9 +17,9 @@ export default function MovieRow({items, title}) {
     }
     const handleRightArrow =  function (){
         let x = scrollX - Math.round(window.innerWidth / 2)
-        let listW = items.results.length * 250
+        let listW = items.results.length * tamItem
         if((window.innerWidth - listW) > x){
-            x = (window.innerWidth - listW - 80)
+            x = (window.innerWidth - listW - (tamItem === 250 ? 80: 20))
         }
         setScrollX(x)
         
@@ -38,7 +39,7 @@ export default function MovieRow({items, title}) {
             <div className="movieRow--listarea">
                 <div className="movieRow--list" style={{
                     marginLeft: scrollX,
-                    width: items.results.length * 250,
+                    width: items.results.length * tamItem,
                 }}>
                     {items.results.length> 0 && items.results.map((item, key)=>(
                         <div key={key} className="movieRow--item">

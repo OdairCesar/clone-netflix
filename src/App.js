@@ -60,6 +60,11 @@ function App() {
         Direitos de imagem para a Netflix<br />
         Dados pegos da TheMovieDataBase
       </footer>
+
+      {movieList.length <= 0 &&
+        <div className='loading'>
+          <img src='https://c.tenor.com/Rfyx9OkRI38AAAAM/netflix-netflix-startup.gif' alt='loading'/>
+        </div>}
     </div>
   );
 }

@@ -55,7 +55,11 @@ function App() {
           <MovieRow title={item.title} items={item.items} key={key}/>
         ))}
       </section>
-      Rodape basico
+      <footer>
+        Feito com carinho pela B7Week e Odair<br />
+        Direitos de imagem para a Netflix<br />
+        Dados pegos da TheMovieDataBase
+      </footer>
     </div>
   );
 }
